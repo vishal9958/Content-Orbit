@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌊 Ultra-Smooth Glassmorphism - Glow adjust kiya hai */
+.glass-glow {
+  box-shadow: 0 0 80px -20px rgba(168, 85, 247, 0.15);
+}
+
+/* 🎨 Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+/* 🚀 Button Glow */
+.btn-glow:hover {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+@layer base {
+  body {
+    @apply bg-[#030303] selection:bg-purple-500 selection:text-white;
+  }
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- 🔥 Crystal Clear Card Styles (Fixed for Transparency) --- */
+.card {
+  position: relative;
+  /* Kaala rang hataya, sirf 1% white tint rakha hai R-paar dikhne ke liye */
+  background: rgba(255, 255, 255, 0.01) !important;
+  
+  /* Blur 20px se 4px kiya taaki piche ka animation clear crystal dikhe */
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding: 24px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* --- Specific Card Variations --- */
+
+.refine-card {
+  background: rgba(255, 255, 255, 0.01) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.intelligence-card {
+  background: rgba(255, 255, 255, 0.01) !important;
+  backdrop-filter: blur(4px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 2.5rem !important;
+  padding: 2rem !important;
+}
+
+/* --- UI Element Enhancements --- */
+
+/* Inputs & Search Bar (Crystal Clear jaisa tune manga tha) */
+.search-bar {
+  background: rgba(255, 255, 255, 0.02) !important;
+  backdrop-filter: blur(4px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50px !important;
+}
+
+/* Buttons */
+.button-primary {
+  background-color: white !important;
+  color: black !important;
+  border-radius: 50px !important;
+  font-weight: 700 !important;
+  padding: 10px 30px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  transition: all 0.3s ease !important;
+}
+
+.button-secondary {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(4px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border-radius: 12px !important;
+  padding: 8px 16px !important;
+}
+
+/* Sidebar Styling - Keeping it clean */
+.sidebar {
+  background: rgba(255, 255, 255, 0.01) !important;
+  backdrop-filter: blur(8px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.system-status {
+  background: rgba(34, 197, 94, 0.02) !important;
+  backdrop-filter: blur(4px) !important;
+  border: 1px solid rgba(34, 197, 94, 0.2) !important;
+  border-radius: 12px !important;
+}
