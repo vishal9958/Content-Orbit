@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 import { motion } from "framer-motion";
 
 export default function ScheduledPipeline() {
@@ -7,7 +8,7 @@ export default function ScheduledPipeline() {
 
   const fetchSchedules = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/schedules/pending");
+      const res = await axios.get(`${API_BASE_URL}/api/schedules/pending`);
       setSchedules(res.data);
     } catch (err) {
       console.error("Pipeline Sync Error");

@@ -12,6 +12,7 @@ import HistoryModal from "../components/HistoryModal";
 import { auth, provider, signInWithPopup } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 export default function Dashboard() {
   // Real User State
@@ -58,7 +59,7 @@ export default function Dashboard() {
 
   const fetchNodeStatus = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/user/connection-status");
+      const res = await axios.get(`${API_BASE_URL}/api/user/connection-status`);
       setNodes(res.data);
     } catch (err) {
       console.error("Node status fetch failed", err);
@@ -68,7 +69,7 @@ export default function Dashboard() {
   // 🔥 Safety Fix: Function to trigger AI healing
   const handleAutoCorrect = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auto-correct", {
+      await axios.post(`${API_BASE_URL}/api/auto-correct`, {
         videoId: "LIVE_NODE_01",
         issueType: alertInfo.type
       });
@@ -84,7 +85,7 @@ const generateVideo = async (script, id) => {
     setLoadingVideo(true); 
     
     // 2. Backend call
-    const res = await axios.post("http://localhost:5000/api/video/gemini-veo", {
+    const res = await axios.post(`${API_BASE_URL}/api/video/gemini-veo`, {
       prompt: script,
       id: id,
       language: "Hinglish"
@@ -118,7 +119,7 @@ const generateVideo = async (script, id) => {
         photo: result.user.photoURL,
       };
       setUser(realUser);
-      await axios.post("http://localhost:5000/api/auth/google", realUser);
+      await axios.post(`${API_BASE_URL}/api/auth/google`, realUser);
       fetchNodeStatus();
     } catch (error) {
       console.error("Auth Error:", error);

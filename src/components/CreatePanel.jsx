@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 import { motion, AnimatePresence } from "framer-motion";
 import VersionModal from "./VersionModal"; 
 
@@ -18,7 +19,7 @@ export default function CreatePanel() {
     if (!idea) return;
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/generate", { idea });
+      const res = await axios.post(`${API_BASE_URL}/api/generate`, { idea });
       setVersions(res.data.versions);
     } catch (err) {
       console.error(err);
@@ -39,7 +40,7 @@ export default function CreatePanel() {
     if (!time) return;
     setIsScheduling(versionId);
     try {
-      const res = await axios.post("http://localhost:5000/api/schedule-db", {
+      const res = await axios.post(`${API_BASE_URL}/api/schedule-db`, {
         id: versionId,
         title: `AI Post - ${versionId.substring(0, 5)}`,
         description: content,
@@ -58,7 +59,7 @@ export default function CreatePanel() {
     if (!confirm("Move this to Legacy Vault? It will be posted if system detects inactivity.")) return;
     setIsLegacySaving(versionId);
     try {
-      const res = await axios.post("http://localhost:5000/api/schedule-db", {
+      const res = await axios.post(`${API_BASE_URL}/api/schedule-db`, {
         id: versionId,
         title: `LEGACY: ${idea.substring(0, 20)}`,
         description: content,
@@ -76,7 +77,7 @@ export default function CreatePanel() {
     if (generatingVideoId) return; 
     setGeneratingVideoId(versionId); 
     try {
-      const res = await axios.post("http://localhost:5000/api/video/gemini-veo", { 
+      const res = await axios.post(`${API_BASE_URL}/api/video/gemini-veo`, { 
         prompt: scriptContent,
         id: versionId, 
         language: "Hinglish"

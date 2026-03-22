@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 // 📈 Live Graph Component for Intelligence Boxes
 const MiniGraph = ({ color }) => (
@@ -60,7 +61,7 @@ export default function Global({ user, nodes }) {
   useEffect(() => {
     const fetchLiveStatus = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/global/status");
+        const res = await axios.get(`${API_BASE_URL}/api/global/status`);
         if (res.data) {
           setRealProgress(res.data);
           console.log("Real Data Synced 🔥:", res.data);

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function HistoryModal({ isOpen, onClose }) {
@@ -9,7 +10,7 @@ export default function HistoryModal({ isOpen, onClose }) {
   useEffect(() => {
     if (isOpen) {
       setLoading(true);
-      axios.get("http://localhost:5000/api/schedules/all")
+      axios.get(`${API_BASE_URL}/api/schedules/all`)
         .then(res => {
           setHistory(res.data);
           setLoading(false);
@@ -99,7 +100,7 @@ export default function HistoryModal({ isOpen, onClose }) {
                       {record.repurposed && <span className="text-rose-400">Repurposed</span>}
                     </p>
                     <video 
-                      src={`http://localhost:5000/videos/${record.contentId}.mp4`} 
+                      src={`${API_BASE_URL}/videos/${record.contentId}.mp4`} 
                       controls 
                       className="w-full h-auto max-h-[250px] object-contain rounded-xl bg-black border border-white/5"
                     />

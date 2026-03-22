@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 export default function InsightsPanel() {
   const [metrics, setMetrics] = useState({
@@ -13,7 +14,7 @@ export default function InsightsPanel() {
   const fetchMetrics = async () => {
     try {
       // ✅ Backend port 5000 se real-time data sync
-      const res = await axios.get("http://localhost:5000/api/analytics/live-metrics");
+      const res = await axios.get(`${API_BASE_URL}/api/analytics/live-metrics`);
       if (res.data) {
         setMetrics(res.data);
       }

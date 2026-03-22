@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Zero-dependency SVG component that is guaranteed to scale perfectly without breaking box layout
@@ -78,7 +79,7 @@ export default function SettingsPanel() {
 
   const fetchAnalytics = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/schedules/analytics");
+      const res = await axios.get(`${API_BASE_URL}/api/schedules/analytics`);
       setData(res.data);
     } catch (err) {
       console.error(err);
